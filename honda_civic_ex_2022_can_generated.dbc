@@ -20,6 +20,17 @@ VAL_ 513 STATE 5 "FAULT_TIMEOUT" 4 "FAULT_STARTUP" 3 "FAULT_SCE" 2 "FAULT_SEND" 
 
 
 CM_ "Imported file _honda_common.dbc starts here";
+BO_ 145 KINEMATICS_ALT: 8 XXX
+ SG_ LAT_ACCEL : 7|10@0+ (0.02,-512) [-20|20] "m/s2" EON
+ SG_ COUNTER : 61|2@0+ (1,0) [0|3] "" EON
+ SG_ CHECKSUM : 59|4@0+ (1,0) [0|3] "" EON
+
+BO_ 148 KINEMATICS: 8 XXX
+ SG_ LAT_ACCEL : 7|10@0+ (0.02,-512) [-20|20] "m/s2" EON
+ SG_ LONG_ACCEL : 24|9@0- (-0.02,0) [-20|20] "m/s2" EON
+ SG_ CHECKSUM : 59|4@0+ (1,0) [0|3] "" EON
+ SG_ COUNTER : 61|2@0+ (1,0) [0|3] "" EON
+
 BO_ 304 GAS_PEDAL_2: 8 PCM
  SG_ ENGINE_TORQUE_ESTIMATE : 7|16@0- (1,0) [-1000|1000] "Nm" EON
  SG_ ENGINE_TORQUE_REQUEST : 23|16@0- (1,0) [-1000|1000] "Nm" EON
@@ -64,6 +75,7 @@ BO_ 420 VSA_STATUS: 8 VSA
  SG_ CHECKSUM : 59|4@0+ (1,0) [0|15] "" EON
 
 BO_ 427 STEER_MOTOR_TORQUE: 3 EPS
+ SG_ UNKNOWN_TORQUE_STATE_BIT : 3|1@0+ (1,0) [0|1] "" XXX
  SG_ CONFIG_VALID : 7|1@0+ (1,0) [0|1] "" EON
  SG_ MOTOR_TORQUE : 1|10@0+ (1,0) [0|256] "" EON
  SG_ OUTPUT_DISABLED : 22|1@0+ (1,0) [0|1] "" EON
@@ -109,7 +121,7 @@ BO_ 780 ACC_HUD: 8 ADAS
  SG_ PCM_GAS : 23|8@0+ (1,0) [0|127] "" BDY
  SG_ CRUISE_SPEED : 31|8@0+ (1,0) [0|255] "kph" BDY
  SG_ DTC_MODE : 39|1@0+ (1,0) [0|1] "" BDY
- SG_ BOH : 38|1@0+ (1,0) [0|1] "" BDY
+ SG_ BRAKE_SYSTEM_ICON : 38|1@0+ (1,0) [0|1] "" BDY
  SG_ ACC_PROBLEM : 37|1@0+ (1,0) [0|1] "" BDY
  SG_ FCM_OFF : 35|1@0+ (1,0) [0|1] "" BDY
  SG_ FCM_OFF_2 : 36|1@0+ (1,0) [0|1] "" BDY
@@ -171,6 +183,7 @@ BO_ 1029 DOORS_STATUS: 8 BDY
 CM_ SG_ 304 "Seems to be platform-agnostic";
 CM_ SG_ 316 "Should exist on Nidec";
 CM_ SG_ 420 BRAKE_HOLD_RELATED "On when Brake Hold engaged";
+CM_ SG_ 427 UNKNOWN_TORQUE_STATE_BIT "Might signal driver input above threshold, for driver inactivity detection";
 CM_ SG_ 490 LONG_ACCEL "wheel speed derivative, noisy and zero snapping";
 CM_ SG_ 773 PASS_AIRBAG_ON "Might just be indicator light";
 CM_ SG_ 773 PASS_AIRBAG_OFF "Might just be indicator light";
@@ -186,12 +199,6 @@ VAL_ 891 WIPERS 4 "High" 2 "Low" 0 "Off";
 
 
 CM_ "Imported file _bosch_2018.dbc starts here";
-BO_ 148 KINEMATICS: 8 XXX
- SG_ LAT_ACCEL : 7|10@0+ (-0.035,17.92) [-20|20] "m/s2" EON
- SG_ LONG_ACCEL : 25|10@0+ (-0.035,17.92) [-20|20] "m/s2" EON
- SG_ CHECKSUM : 59|4@0+ (1,0) [0|3] "" EON
- SG_ COUNTER : 61|2@0+ (1,0) [0|3] "" EON
-
 BO_ 228 STEERING_CONTROL: 5 EON
  SG_ STEER_TORQUE_REQUEST : 23|1@0+ (1,0) [0|1] "" EPS
  SG_ SET_ME_X00 : 22|7@0+ (1,0) [0|127] "" EPS
